@@ -20,12 +20,12 @@ let _cachedEntries: MetadataRoute.Sitemap | null = null;
 
 async function buildAllEntries(): Promise<MetadataRoute.Sitemap> {
   if (_cachedEntries) return _cachedEntries;
-  let phoneSlugs: string[] = [];
-  try {
-    const { slugs } = await getAllMergedSlugsAndBrands();
-    phoneSlugs = slugs;
-  } catch {
-    phoneSlugs = getAllPhoneSlugs();
+  // let phoneSlugs: string[] = [];
+  // try {
+  //   const { slugs } = await getAllMergedSlugsAndBrands();
+  //   phoneSlugs = slugs;
+  // } catch {
+  //   phoneSlugs = getAllPhoneSlugs();
   }
 
   const brands = getAllBrands();
