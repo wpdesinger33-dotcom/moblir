@@ -1,0 +1,102 @@
+---
+name: "Huawei Honor 6 Plus"
+slug: "huawei-honor-6-plus"
+brand: "Huawei"
+price: "৳.44,990(Official)Updated on:March 10, 2025"
+image: "/images/phones/huawei/huawei-honor-6-plus.webp"
+released: "2014"
+category: "phone"
+source: "md"
+tags: []
+---
+
+Huawei Honor 6 Plus Price in Bangladesh
+
+## Specifications
+
+| Feature | Details |
+|---|---|
+| Brand | Huawei |
+| Model | Honor 6 Plus |
+| Device Type | Smartphone |
+| Release Date | 15 December 2014 |
+| Status | Available |
+| Operating System | Android |
+| OS Version | v4.4.2 (Kitkat) |
+| User Interface | EMUI |
+| Chipset | Kirin 925 |
+| CPU | Octa-core (4x1.8 GHz Cortex-A15 & 4x1.3 GHz Cortex-A7) |
+| CPU Cores | 8 Cores |
+| Architecture | 64 bit |
+| Fabrication | 28 nm |
+| GPU | Mali-T628 MP4 |
+| Display Type | IPS LCD |
+| Screen Size | 5.5 inches (13.97 cm) |
+| Resolution | 1080x1920 px (FHD) |
+| Aspect Ratio | 16:9 |
+| Pixel Density | 401 ppi |
+| Screen to Body Ratio | 73.2% |
+| Screen Protection | Corning Gorilla Glass 3 |
+| Bezel-less Display | Yes with notch |
+| Touch Screen | Capacitive Touchscreen, Multi-touch |
+| Notch | Yes |
+| Camera Setup | Dual |
+| Resolution | 8 MP, f/2.0, Primary Camera, 2 MP, Depth Camera |
+| Autofocus | Yes |
+| Flash | Dual-LED flash |
+| Image Resolution | 3264 x 2448 Pixels |
+| Settings | Exposure compensation, ISO control |
+| Zoom | Digital Zoom |
+| Shooting Modes | High Dynamic Range mode (HDR) |
+| Aperture | f/2.0 |
+| Camera Features | Face detection, Touch to focus |
+| Video Recording | 1920x1080 |
+| Video FPS | 30 fps |
+| Camera Setup | Single |
+| Resolution | 8 MP, f/2.4 Primary Camera |
+| Video Recording | 1920x1080 |
+| Video FPS | 30 fps |
+| Aperture | f/2.4 |
+| Height | 150.5 mm |
+| Width | 75.7 mm |
+| Thickness | 7.5 mm |
+| Weight | 165 grams |
+| Colors | Black, Gold, White |
+| Battery type | Li-Poly (Lithium Polymer) |
+| Capacity | 3600 mAh |
+| Placement | Non-removable |
+| Internal Storage | 16 GB |
+| Expandable Memory | Up to 128 GB |
+| USB OTG | Yes |
+| RAM | 3 GB |
+| Network | 2G, 3G, 4G |
+| SIM Slot | Single SIM, GSM |
+| SIM Size | SIM1: Micro, SIM2: Micro |
+| EDGE | Available |
+| GPRS | Available |
+| VoLTE | Yes |
+| Speed | HSPA 42.2/5.76 Mbps, LTE Cat6 300/50 Mbps |
+| WLAN | Wi-Fi 4 (802.11 a/b/g/n) 5GHz |
+| Bluetooth | v4.0 |
+| GPS | Yes with A-GPS, Glonass |
+| Infrared | Yes |
+| Wi-fi Hotspot | Yes |
+| NFC | Yes |
+| USB | Mass storage device, USB charging, microUSB 2.0 |
+| Light Sensor | Light sensor, Proximity sensor, Accelerometer, Compass, Gyroscope |
+| FM Radio | Yes |
+| Loudspeaker | Yes |
+| Alert Types | Vibration, MP3, WAV ringtones |
+| Audio Jack | 3.5 mm |
+| Video | 1080p@30fps |
+| Document Reader | Yes |
+| Made By | China |
+| Features | Accelerometer, gyro, proximity, compass |
+| Name | Huawei Honor 6 Plus |
+| Official Price | BDT. 44,990 |
+| Release Date | 15-Dec-2014 |
+| Market Status | In Stock |
+| Variant | RAM: 3GB + ROM: 16GB |
+| Positive: | 0 |
+| Mixed: | 0 |
+| Negative: | 0 |

@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f0f4f8;
+  --foreground: #111827;
+  --primary: #0d9488;
+  --primary-light: #14b8a6;
+  --primary-dark: #0f766e;
+  --accent: #6366f1;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+/* Smooth page transitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-fade-in {
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+/* Wishlist heart pulse animation */
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.heart-pulse {
+  animation: heartPulse 0.4s ease-in-out;
+}
+
+/* Minimal prose styles for MD content rendered as HTML */
+.prose h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1e293b;
+}
+.prose h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+  color: #334155;
+}
+.prose p {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+  color: #334155;
+}
+.prose ul,
+.prose ol {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}
+.prose li {
+  margin-bottom: 0.25rem;
+  color: #334155;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+.prose th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e2e8f0;
+}
+.prose td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+}
+.prose tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+.prose a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+.prose strong {
+  font-weight: 700;
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 1.5rem 0;
+}

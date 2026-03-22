@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="420" viewBox="0 0 300 420">
+  <defs>
+    <linearGradient id="bgipho" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f5f7"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="screenipho" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d1d1f" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1d1d1f" stop-opacity="0.6"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="300" height="420" fill="url(#bgipho)" rx="20"/>
+  <!-- Phone body -->
+  <rect x="85" y="28" width="130" height="248" rx="20" fill="white" stroke="#1d1d1f" stroke-width="2.5" filter="url(#shadow)"/>
+  <!-- Screen bezel -->
+  <rect x="95" y="56" width="110" height="185" rx="6" fill="url(#screenipho)"/>
+  <!-- Notch / dynamic island -->
+  <rect x="128" y="41" width="44" height="10" rx="5" fill="#1d1d1f" opacity="0.4"/>
+  <!-- Side button -->
+  <rect x="215" y="90" width="5" height="30" rx="3" fill="#1d1d1f" opacity="0.5"/>
+  <!-- Camera bump (triple lens) -->
+  <rect x="160" y="62" width="38" height="38" rx="8" fill="#1d1d1f" opacity="0.15"/>
+  <circle cx="171" cy="72" r="6" fill="#1d1d1f" opacity="0.6"/>
+  <circle cx="185" cy="72" r="6" fill="#1d1d1f" opacity="0.6"/>
+  <circle cx="171" cy="86" r="6" fill="#1d1d1f" opacity="0.6"/>
+  <circle cx="185" cy="86" r="4" fill="#1d1d1f" opacity="0.4"/>
+  <!-- Home indicator -->
+  <rect x="131" y="254" width="38" height="4" rx="2" fill="#1d1d1f" opacity="0.3"/>
+  <!-- Brand pill -->
+  <rect x="40" y="296" width="220" height="96" rx="16" fill="#1d1d1f"/>
+  <!-- Brand name -->
+  <text x="150" y="330" text-anchor="middle" font-family="Arial,Helvetica,sans-serif"
+        font-size="18" font-weight="bold" fill="#ffffff">Apple</text>
+  <text x="150" y="345" text-anchor="middle" font-family="Arial,Helvetica,sans-serif"
+        font-size="12" fill="#ffffff" opacity="0.85">iPhone 15</text>
+</svg>

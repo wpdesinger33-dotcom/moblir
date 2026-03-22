@@ -1,91 +1,150 @@
-# টালিখাতা (TaliKhata)
+# GadgetPriceBD – Mobile Shop
 
-A Bangla-first mobile ledger app for small shop owners to track customer credit (বাকি/জমা).
+A Next.js application for mobile phone prices, specifications and reviews in Bangladesh.
 
-Built with **Next.js 16**, **MUI v7**, **Prisma 5**, and **PostgreSQL / MySQL 8.0**.
+## Folder Structure
+
+```
+.
+├── phones/                    # Markdown data files, organised by brand
+│   ├── samsung/
+│   │   ├── samsung-galaxy-s24-ultra.md
+│   │   └── samsung-galaxy-s24.md
+│   ├── apple/
+│   │   └── iphone-15-pro-max.md
+│   ├── xiaomi/ ...
+│   ├── oppo/   ...
+│   ├── oneplus/ ...
+│   ├── realme/ ...
+│   └── vivo/   ...
+│
+├── public/
+│   └── images/
+│       └── phones/            # Phone images, organised by brand
+│           ├── samsung/
+│           │   └── samsung-galaxy-s24-ultra.svg
+│           ├── apple/
+│           │   └── iphone-15-pro-max.svg
+│           └── placeholder-phone.svg
+│
+├── scripts/
+│   └── scrape.py              # Python scraper (run locally)
+│
+├── app/                       # Next.js App Router
+│   ├── page.tsx               # Homepage
+│   ├── phones/page.tsx        # Phone listing with sort/filter
+│   ├── phones/[slug]/page.tsx # Phone detail
+│   ├── brands/[brand]/page.tsx # Brand listing
+│   ├── tablets/page.tsx       # Tablets (coming soon)
+│   ├── watches/page.tsx       # Watches (coming soon)
+│   ├── sitemap.ts
+│   └── robots.ts
+│
+├── components/
+│   ├── Navbar.tsx             # Category + brand dropdown nav
+│   ├── PhoneCard.tsx          # Phone card with price-range badge
+│   └── SearchFilter.tsx       # Search, sort, price-range & brand filter
+│
+└── lib/
+    ├── phones.ts              # Read brand-subfolder MD files
+    └── price.ts               # Price parsing & range labels
+```
 
 ---
 
-## Database Setup
+## Scraper — `scripts/scrape.py`
 
-### PostgreSQL (default)
+Downloads phone data and saves everything under **brand subfolders**:
+
+- MD files:  `phones/{brand}/{slug}.md`
+- Images:    `public/images/phones/{brand}/{slug}.jpg`
+
+### Requirements
 
 ```bash
-# 1. Copy and fill in the environment file
-cp .env.example .env
-# Edit .env and set your DATABASE_URL
-
-# 2. Run migrations to create tables
-npm run db:migrate
-
-# 3. (Optional) Seed with sample data
-npm run db:seed
+pip install requests beautifulsoup4 lxml
 ```
 
-**PostgreSQL connection string format:**
-```
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/tolikhata?schema=public"
-```
+### Usage (run from project root)
 
-### MySQL 8.0
+```bash
+# Scrape all phones
+python scripts/scrape.py
 
-1. Open `prisma/schema.prisma` and change `provider = "postgresql"` to `provider = "mysql"`
-2. Update `.env`:
-   ```
-   DATABASE_URL="mysql://USER:PASSWORD@HOST:3306/tolikhata"
-   ```
-3. Run migrations: `npm run db:migrate`
+# First 20 only (great for testing)
+python scripts/scrape.py --limit 20
+
+# Single phone by URL slug
+python scripts/scrape.py --slug samsung-galaxy-s25
+
+# Set category label (default: phone)
+python scripts/scrape.py --category phone
+
+# Custom delay between requests
+python scripts/scrape.py --delay 2
+```
 
 ---
 
-## Development
+## Frontend — Next.js
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
-npm run dev
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+### Routes
 
----
-
-## Database Scripts
-
-| Command | Description |
+| Route | Description |
 |---|---|
-| `npm run db:generate` | Re-generate Prisma Client after schema changes |
-| `npm run db:push` | Push schema to DB without creating a migration (dev/prototype) |
-| `npm run db:migrate` | Create and apply a new migration |
-| `npm run db:migrate:deploy` | Apply pending migrations in production |
-| `npm run db:seed` | Seed the database with sample data |
-| `npm run db:studio` | Open Prisma Studio (visual DB browser) |
+| `/` | Homepage with category cards & featured phones |
+| `/phones` | Full phone listing, sort by price, filter by brand / price range |
+| `/phones/[slug]` | Phone detail page |
+| `/brands/[brand]` | All phones for a brand |
+| `/tablets` | Tablets (coming soon) |
+| `/watches` | Watches (coming soon) |
+| `/sitemap.xml` | Auto-generated SEO sitemap |
+| `/robots.txt` | Robots file |
+
+### Price Ranges
+
+| Label | BDT Range |
+|---|---|
+| Budget | < ৳30,000 |
+| Mid-range | ৳30,000 – ৳80,000 |
+| Flagship | > ৳80,000 |
+
+### Environment
+
+Copy `.env.local.example` → `.env.local` if you plan to add a backend API for new devices.
 
 ---
 
-## API Routes
+## Adding Phones Manually
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/api/customers` | List all customers |
-| POST | `/api/customers` | Create a customer |
-| GET | `/api/customers/:id` | Get a single customer |
-| PUT | `/api/customers/:id` | Update a customer |
-| DELETE | `/api/customers/:id` | Delete customer + all transactions |
-| GET | `/api/transactions` | List transactions (filter with `?customerId=`) |
-| POST | `/api/transactions` | Add a transaction (updates customer balance atomically) |
-| GET | `/api/transactions/:id` | Get a single transaction |
-| DELETE | `/api/transactions/:id` | Delete transaction (reverses balance atomically) |
+Create `phones/{brand}/{slug}.md`:
 
+```markdown
+---
+name: "Samsung Galaxy S25"
+slug: "samsung-galaxy-s25"
+brand: "Samsung"
+price: "৳ 1,20,000"
+image: "/images/phones/samsung/samsung-galaxy-s25.jpg"
+released: "2025"
+category: "phone"
+source: "md"
+tags: ["5G", "50MP"]
 ---
 
-## Production
+Description here.
 
-```bash
-npm run build
-npm start
+## Specifications
+
+| Feature | Details |
+|---|---|
+| Display | 6.2-inch AMOLED |
 ```
 
-The app runs as a standard Node.js server — no Vercel or any other cloud platform required.
+Place the image at `public/images/phones/samsung/samsung-galaxy-s25.jpg`.

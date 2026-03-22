@@ -1,35 +1,37 @@
 # dependencies
-/node_modules
-/.pnp
+node_modules/
+.pnp
 .pnp.js
-.yarn/install-state.gz
-
-# testing
-/coverage
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
-# production
-/build
+# production build
+build/
+dist/
 
-# misc
-.DS_Store
-*.pem
+# env files – never commit secrets
+.env
+.env.local
+.env.*.local
 
-# debug
+# debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
-.env
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
 
-# vercel
-.vercel
+# Python scraper
+scripts/__pycache__/
+*.pyc
+*.pyo
 
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts

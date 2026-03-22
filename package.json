@@ -1,43 +1,41 @@
 {
-  "name": "tolikhata",
+  "name": "mobile-shop-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push",
-    "db:migrate": "prisma migrate dev",
-    "db:migrate:deploy": "prisma migrate deploy",
-    "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio",
-    "postinstall": "prisma generate"
+    "lint": "next lint",
+    "build:cf": "next build && npx @cloudflare/next-on-pages"
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^7.3.9",
-    "@mui/material": "^7.3.9",
-    "@prisma/client": "^5.22.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.11",
+    "@mui/material": "^6.4.11",
+    "@mui/material-nextjs": "^6.4.3",
+    "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^3.0.3",
-    "iron-session": "^8.0.4",
-    "next": "16.1.7",
-    "prisma": "^5.22.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "gray-matter": "^4.0.3",
+    "mongoose": "^9.2.4",
+    "next": "15.3.8",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@tailwindcss/postcss": "^4",
-    "@types/bcryptjs": "^3.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.7",
+    "eslint-config-next": "15.3.0",
     "tailwindcss": "^4",
-    "tsx": "^4.21.0",
-    "typescript": "^5"
+    "typescript": "5.9.3"
   }
 }

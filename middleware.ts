@@ -1,55 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getIronSession } from "iron-session";
-import { sessionOptions, SessionData } from "@/lib/session";
+import { verifyAdminToken } from "@/lib/adminToken";
 
-// Routes that don't require authentication
-const PUBLIC_PATHS = [
-  "/",
-  "/pricing",
-  "/auth/login",
-  "/auth/signup",
-];
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
 
-const PUBLIC_PREFIXES = [
-  "/api/auth/",
-  "/_next/",
-  "/favicon.ico",
-];
+  // Protect /admin/* except /admin/login
+  if (pathname.startsWith("/admin") && !pathname.startsWith("/admin/login")) {
+    const token = req.cookies.get("admin_token")?.value;
 
-function isPublic(pathname: string): boolean {
-  if (PUBLIC_PATHS.includes(pathname)) return true;
-  if (PUBLIC_PREFIXES.some((p) => pathname.startsWith(p))) return true;
-  return false;
-}
-
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (isPublic(pathname)) {
-    return NextResponse.next();
-  }
-
-  // For API routes, return 401 JSON instead of redirecting
-  const isApiRoute = pathname.startsWith("/api/");
-
-  const response = NextResponse.next();
-  const session = await getIronSession<SessionData>(request, response, sessionOptions);
-
-  if (!session.userId) {
-    if (isApiRoute) {
-      return NextResponse.json({ error: "অনুমতি নেই" }, { status: 401 });
+    if (!token) {
+      const loginUrl = new URL("/admin/login", req.url);
+      loginUrl.searchParams.set("from", pathname);
+      return NextResponse.redirect(loginUrl);
     }
-    const loginUrl = new URL("/auth/login", request.url);
-    loginUrl.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(loginUrl);
+
+    // Try new HMAC-signed token first, then fall back to legacy ADMIN_SECRET equality
+    // so existing sessions continue to work after upgrade.
+    const payload = await verifyAdminToken(token);
+    const legacy  = !payload && process.env.ADMIN_SECRET && token === process.env.ADMIN_SECRET;
+
+    if (!payload && !legacy) {
+      const loginUrl = new URL("/admin/login", req.url);
+      loginUrl.searchParams.set("from", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
   }
 
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    // Match all paths except static files
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-  ],
+  matcher: ["/admin/:path*"],
 };
