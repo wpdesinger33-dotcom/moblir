@@ -5,7 +5,7 @@ import { getAllBudgetSlugs } from "@/lib/budget-pages";
 
 const BASE =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://gadgetpricebd.vercel.app";
+  "https://bestmobilelist.com";
 
 const LIMIT = 300;
 
@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
     },
 
-    // ✅ MOBILE PAGES
+  
     ...phoneSlugs.map((slug) => ({
       url: `${BASE}/phones/${slug}`,
       lastModified: new Date(),
